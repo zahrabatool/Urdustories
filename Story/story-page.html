@@ -21,6 +21,27 @@
             padding: 20px;
         }
 
+        .page-heading {
+            text-align: center;
+            font-size: 20px;
+            color: #2c3e50;
+            background: #f8f9fa;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            direction: ltr;
+            border: 1px solid #e9ecef;
+        }
+
+        .urdu-heading {
+            display: block;
+            font-size: 18px;
+            color: #34495e;
+            margin-top: 5px;
+            direction: rtl;
+        }
+
         .slideshow-container {
             max-width: 800px;
             width: 100%;
@@ -113,21 +134,6 @@
             background: white;
         }
 
-        @keyframes fade {
-            from {
-                opacity: 0.4;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .slide-counter {
-            text-align: center;
-            color: #666;
-            margin-top: 10px;
-        }
-
         .audio-controls {
             position: fixed;
             bottom: 20px;
@@ -160,13 +166,108 @@
         .audio-controls .volume-control {
             width: 100px;
         }
+
+        @keyframes fade {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        .slide-counter {
+            text-align: center;
+            color: #666;
+            margin-top: 10px;
+        }
+
+
+        .activities-content {
+        padding: 20px;
+        text-align: right;
+        background: #f8f9fa;
+        border-radius: 10px;
+        margin: 20px 0;
+        height: 400px;
+        overflow-y: auto;
+    }
+
+    .questions-section, .vocabulary-section {
+        margin-bottom: 25px;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+        font-size: 24px;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 10px;
+    }
+
+    .question-list {
+        list-style-position: inside;
+        padding: 0;
+    }
+
+    .question-list li {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #444;
+        line-height: 1.6;
+    }
+
+    .vocab-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .vocab-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        font-size: 18px;
+        transition: transform 0.2s;
+    }
+
+    .vocab-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .vocab-urdu {
+        font-weight: bold;
+        color: #2c3e50;
+    }
+
+    .vocab-english {
+        color: #666;
+    }
+
+    .moral-section {
+        margin-top: 30px;
+        padding: 15px;
+        background: #e8f5e9;
+        border-radius: 8px;
+        border-right: 4px solid #4CAF50;
+    }
+
+    .moral-text {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #2c3e50;
+    }
     </style>
 </head>
 <body>
-    <!-- Audio Controls -->
     <div class="audio-controls">
-        <button onclick="toggleAudio()" id="audioToggle">Play Music</button>
-        <input type="range" class="volume-control" min="0" max="1" step="0.1" value="0.5" onchange="updateVolume(this.value)">
+        <button onclick="toggleAudio()" id="audioToggle" aria-label="Toggle Audio">Play Music</button>
+        <input type="range" class="volume-control" min="0" max="1" step="0.1" value="0.5" onchange="updateVolume(this.value)" aria-label="Volume Control">
         <audio id="bgMusic" loop>
             <source src="jungle-ambiance.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
@@ -176,6 +277,10 @@
     <div class="slideshow-container">
         <!-- Slide 1 -->
         <div class="slide active">
+            <div class="page-heading">
+                Page 1
+                <span class="urdu-heading">پہلا صفحہ</span>
+            </div>
             <img src="scene1.jpeg" alt="Bird and rabbit on nest">
             <div class="slide-content">
                 <h2 class="slide-title">مہربان پرندہ</h2>
@@ -187,6 +292,10 @@
 
         <!-- Slide 2 -->
         <div class="slide">
+            <div class="page-heading">
+                Page 2
+                <span class="urdu-heading">دوسرا صفحہ</span>
+            </div>
             <img src="scene2.jpeg" alt="Bird helping ant">
             <div class="slide-content">
                 <h2 class="slide-title">چیونٹی کی مدد</h2>
@@ -198,6 +307,10 @@
 
         <!-- Slide 3 -->
         <div class="slide">
+            <div class="page-heading">
+                Page 3
+                <span class="urdu-heading">تیسرا صفحہ</span>
+            </div>
             <img src="scene3.jpeg" alt="Magical forest scene">
             <div class="slide-content">
                 <h2 class="slide-title">خرگوش کی دوستی</h2>
@@ -209,6 +322,10 @@
 
         <!-- Slide 4 -->
         <div class="slide">
+            <div class="page-heading">
+                Page 4
+                <span class="urdu-heading">چوتھا صفحہ</span>
+            </div>
             <img src="scene4.jpeg" alt="Bird in natural habitat">
             <div class="slide-content">
                 <h2 class="slide-title">نیک کام کا انعام</h2>
@@ -218,14 +335,87 @@
             </div>
         </div>
 
-        <!-- Navigation buttons -->
-        <button class="prev" onclick="changeSlide(-1)">❯</button>
-        <button class="next" onclick="changeSlide(1)">❮</button>
 
-        <!-- Dots -->
+        <!-- Slide 5 (Practice Questions) -->
+<div class="slide">
+    <div class="page-heading">
+        Page 5
+        <span class="urdu-heading">مشق کے سوالات</span>
+    </div>
+    <div class="activities-content">
+        <div class="questions-section">
+            <h2 class="section-title">سوالات</h2>
+            <ol class="question-list">
+                <li>چڑیا کون تھی؟</li>
+                <li>اس نے چیونٹی کی کیسے مدد کی؟</li>
+                <li>خرگوش کو کیا مسئلہ تھا؟</li>
+                <li>جب چڑیا مشکل میں تھی تو کس نے اس کی مدد کی؟</li>
+                <li>اس کہانی سے ہمیں کیا سبق ملتا ہے؟</li>
+            </ol>
+        </div>
+        <div class="moral-section">
+            <h2 class="section-title">سبق</h2>
+            <p class="moral-text">
+                چڑیا نے کہا: "شکریہ دوستو! آج مجھے سمجھ آ گیا کہ جب ہم دوسروں کی مدد کرتے ہیں، تو وقت آنے پر دوسرے بھی ہماری مدد کرتے ہیں۔"
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6 (Vocabulary) -->
+<div class="slide">
+    <div class="page-heading">
+        Page 6
+        <span class="urdu-heading">نئے الفاظ</span>
+    </div>
+    <div class="activities-content">
+        <div class="vocabulary-section">
+            <h2 class="section-title">نئے الفاظ (New Words)</h2>
+            <div class="vocab-grid">
+                <div class="vocab-item">
+                    <span class="vocab-urdu">مہربان</span>
+                    <span class="vocab-english">Kind</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-urdu">چڑیا</span>
+                    <span class="vocab-english">Bird</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-urdu">جنگل</span>
+                    <span class="vocab-english">Forest</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-urdu">چیونٹی</span>
+                    <span class="vocab-english">Ant</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-urdu">خرگوش</span>
+                    <span class="vocab-english">Rabbit</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-urdu">گھونسلہ</span>
+                    <span class="vocab-english">Nest</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-urdu">طوفان</span>
+                    <span class="vocab-english">Storm</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-urdu">مدد</span>
+                    <span class="vocab-english">Help</span>
+                </div>
+                <div class="vocab-item">
+                    <span class="vocab-urdu">سبق</span>
+                    <span class="vocab-english">Lesson</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <button class="prev" onclick="changeSlide(-1)" aria-label="Previous Slide">❯</button>
+        <button class="next" onclick="changeSlide(1)" aria-label="Next Slide">❮</button>
+
         <div class="dots"></div>
-
-        <!-- Slide counter -->
         <div class="slide-counter">1 / 4</div>
     </div>
 
