@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مہربان پرندہ - The Kind Bird</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .slideshow-container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            animation: fade 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .slide-content {
+            padding: 20px 0;
+            text-align: right;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .slide-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .prev:hover, .next:hover {
+            background: white;
+        }
+
+        .prev {
+            left: 30px;
+        }
+
+        .next {
+            right: 30px;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 425px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background: white;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0.4;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide-counter {
+            text-align: center;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .audio-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .audio-controls button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .audio-controls button:hover {
+            background: #45a049;
+        }
+
+        .audio-controls .volume-control {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio Controls -->
+    <div class="audio-controls">
+        <button onclick="toggleAudio()" id="audioToggle">Play Music</button>
+        <input type="range" class="volume-control" min="0" max="1" step="0.1" value="0.5" onchange="updateVolume(this.value)">
+        <audio id="bgMusic" loop>
+            <source src="jungle-ambiance.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div class="slideshow-container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <img src="scene1.jpeg" alt="Bird and rabbit on nest">
+            <div class="slide-content">
+                <h2 class="slide-title">مہربان پرندہ</h2>
+                <p class="slide-text">
+                    ایک جنگل میں ایک چھوٹی سی چڑیا رہتی تھی۔ وہ بہت مہربان تھی اور ہر جانور کی مدد کرتی تھی۔ وہ روزانہ صبح سویرے اٹھتی اور پورے جنگل میں اڑتی۔ راستے میں جو بھی جانور اسے ملتا، وہ اس کا حال پوچھتی۔
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <img src="scene2.jpeg" alt="Bird helping ant">
+            <div class="slide-content">
+                <h2 class="slide-title">چیونٹی کی مدد</h2>
+                <p class="slide-text">
+                    ایک دن بارش ہو رہی تھی۔ چڑیا نے دیکھا کہ ایک چھوٹی چیونٹی بارش میں پھنس گئی ہے۔ چیونٹی نے کہا: مدد کرو! میں گھر نہیں پہنچ سکتی! چڑیا نے فوراً ایک پتہ اٹھایا اور چیونٹی کو اس کے گھر تک پہنچا دیا۔
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+            <img src="scene3.jpeg" alt="Magical forest scene">
+            <div class="slide-content">
+                <h2 class="slide-title">خرگوش کی دوستی</h2>
+                <p class="slide-text">
+                    اگلے دن، ایک خرگوش کو اپنے گھر کا راستہ نہیں مل رہا تھا۔ خرگوش نے کہا: میں کھو گیا ہوں۔ کیا کوئی مجھے راستہ بتا سکتا ہے؟ چڑیا نے اوپر سے دیکھا اور خرگوش کو اس کے گھر تک کا راستہ دکھایا۔
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide">
+            <img src="scene4.jpeg" alt="Bird in natural habitat">
+            <div class="slide-content">
+                <h2 class="slide-title">نیک کام کا انعام</h2>
+                <p class="slide-text">
+                    کچھ دنوں بعد، جنگل میں ایک طوفان آیا۔ اب چڑیا مشکل میں تھی۔ اس کا گھونسلہ ٹوٹ گیا تھا۔ تب وہ سب جانور جن کی چڑیا نے مدد کی تھی، آگے آئے۔ سب نے مل کر چڑیا کے لیے ایک نیا گھونسلہ بنایا۔
+                </p>
+            </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <button class="prev" onclick="changeSlide(-1)">❯</button>
+        <button class="next" onclick="changeSlide(1)">❮</button>
+
+        <!-- Dots -->
+        <div class="dots"></div>
+
+        <!-- Slide counter -->
+        <div class="slide-counter">1 / 4</div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelector('.dots');
+        const counter = document.querySelector('.slide-counter');
+        const audio = document.getElementById('bgMusic');
+        const audioToggle = document.getElementById('audioToggle');
+
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(index);
+            dots.appendChild(dot);
+        });
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            document.querySelectorAll('.dot')[currentSlide].classList.add('active');
+            counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+        }
+
+        function changeSlide(n) {
+            showSlide(currentSlide + n);
+        }
+
+        function goToSlide(n) {
+            showSlide(n);
+        }
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                audioToggle.textContent = 'Pause Music';
+            } else {
+                audio.pause();
+                audioToggle.textContent = 'Play Music';
+            }
+        }
+
+        function updateVolume(value) {
+            audio.volume = value;
+        }
+
+        // Set initial volume
+        audio.volume = 0.5;
+
+        // Handle page visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                audio.pause();
+                audioToggle.textContent = 'Play Music';
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === ' ') toggleAudio(); // Space bar toggles audio
+        });
+    </script>
+</body>
+</html>
