@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مہربان پرندہ - The Kind Bird</title>
     <style>
-        * {
+           * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -21,12 +21,47 @@
             padding: 20px;
         }
 
+        .slideshow-container {
+            max-width: 1000px; /* Increased from 800px */
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Title Page Styles */
+        .title-page {
+            text-align: center;
+            padding: 40px;
+            height: 600px; /* Match the height of other slides */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+        }
+
+        .title-page h1 {
+            font-size: 48px; /* Larger title */
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .title-page .subtitle {
+            font-size: 28px;
+            color: #34495e;
+            margin-bottom: 40px;
+        }
+
         .page-heading {
             text-align: center;
-            font-size: 20px;
+            font-size: 24px; /* Increased from 20px */
             color: #2c3e50;
             background: #f8f9fa;
-            padding: 8px;
+            padding: 12px; /* Increased padding */
             margin-bottom: 15px;
             border-radius: 8px;
             font-weight: bold;
@@ -36,20 +71,10 @@
 
         .urdu-heading {
             display: block;
-            font-size: 18px;
+            font-size: 22px; /* Increased from 18px */
             color: #34495e;
             margin-top: 5px;
             direction: rtl;
-        }
-
-        .slideshow-container {
-            max-width: 800px;
-            width: 100%;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            position: relative;
         }
 
         .slide {
@@ -63,24 +88,24 @@
 
         .slide img {
             width: 100%;
-            height: 400px;
+            height: 450px; /* Increased from 400px */
             object-fit: cover;
             border-radius: 10px;
         }
 
         .slide-content {
-            padding: 20px 0;
+            padding: 25px 0; /* Increased padding */
             text-align: right;
         }
 
         .slide-title {
-            font-size: 24px;
+            font-size: 32px; /* Increased from 24px */
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .slide-text {
-            font-size: 18px;
+            font-size: 22px; /* Increased from 18px */
             line-height: 1.6;
             color: #666;
         }
@@ -98,6 +123,7 @@
             align-items: center;
             justify-content: center;
             transition: background-color 0.3s;
+            font-size: 24px; /* Larger navigation arrows */
         }
 
         .prev:hover, .next:hover {
@@ -114,24 +140,25 @@
 
         .dots {
             position: absolute;
-            bottom: 425px;
+            bottom: 20px; /* Modified to appear at bottom */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 8px;
+            z-index: 10;
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.5);
+            width: 12px; /* Slightly larger dots */
+            height: 12px;
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 50%;
             cursor: pointer;
             transition: background-color 0.3s;
         }
 
         .dot.active {
-            background: white;
+            background: #2c3e50;
         }
 
         .audio-controls {
@@ -139,12 +166,12 @@
             bottom: 20px;
             left: 20px;
             background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
+            padding: 15px; /* Increased padding */
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             z-index: 1000;
         }
 
@@ -152,10 +179,10 @@
             background: #4CAF50;
             color: white;
             border: none;
-            padding: 8px 15px;
+            padding: 10px 20px; /* Larger buttons */
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px; /* Larger text */
             transition: background-color 0.3s;
         }
 
@@ -265,16 +292,26 @@
     </style>
 </head>
 <body>
+
     <div class="audio-controls">
-        <button onclick="toggleAudio()" id="audioToggle" aria-label="Toggle Audio">Play Music</button>
-        <input type="range" class="volume-control" min="0" max="1" step="0.1" value="0.5" onchange="updateVolume(this.value)" aria-label="Volume Control">
-        <audio id="bgMusic" loop>
-            <source src="jungle-ambiance.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+        <button onclick="toggleBackgroundMusic()" id="bgMusicToggle">Play Background Music</button>
+        <button onclick="toggleNarration()" id="narrationToggle">Play Narration</button>
+        <input type="range" class="volume-control" min="0" max="1" step="0.1" value="0.5" onchange="updateVolume(this.value)">
     </div>
 
+    
+
     <div class="slideshow-container">
+
+        <!-- Title Page -->
+        <div class="slide active">
+            <div class="title-page">
+                <h1>مہربان پرندہ</h1>
+                <div class="subtitle">The Kind Bird</div>
+                <img src="scene1.jpeg" alt="Decorative bird illustration" style="max-width: 300px; margin: 20px 0;">
+            </div>
+        </div>
+
         <!-- Slide 1 -->
         <div class="slide active">
             <div class="page-heading">
@@ -337,95 +374,120 @@
 
 
         <!-- Slide 5 (Practice Questions) -->
-<div class="slide">
-    <div class="page-heading">
-        Page 5
-        <span class="urdu-heading">مشق کے سوالات</span>
-    </div>
-    <div class="activities-content">
-        <div class="questions-section">
-            <h2 class="section-title">سوالات</h2>
-            <ol class="question-list">
-                <li>چڑیا کون تھی؟</li>
-                <li>اس نے چیونٹی کی کیسے مدد کی؟</li>
-                <li>خرگوش کو کیا مسئلہ تھا؟</li>
-                <li>جب چڑیا مشکل میں تھی تو کس نے اس کی مدد کی؟</li>
-                <li>اس کہانی سے ہمیں کیا سبق ملتا ہے؟</li>
-            </ol>
-        </div>
-        <div class="moral-section">
-            <h2 class="section-title">سبق</h2>
-            <p class="moral-text">
-                چڑیا نے کہا: "شکریہ دوستو! آج مجھے سمجھ آ گیا کہ جب ہم دوسروں کی مدد کرتے ہیں، تو وقت آنے پر دوسرے بھی ہماری مدد کرتے ہیں۔"
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- Slide 6 (Vocabulary) -->
-<div class="slide">
-    <div class="page-heading">
-        Page 6
-        <span class="urdu-heading">نئے الفاظ</span>
-    </div>
-    <div class="activities-content">
-        <div class="vocabulary-section">
-            <h2 class="section-title">نئے الفاظ (New Words)</h2>
-            <div class="vocab-grid">
-                <div class="vocab-item">
-                    <span class="vocab-urdu">مہربان</span>
-                    <span class="vocab-english">Kind</span>
+        <div class="slide">
+            <div class="page-heading">
+                Page 5
+                <span class="urdu-heading">مشق کے سوالات</span>
+            </div>
+            <div class="activities-content">
+                <div class="questions-section">
+                    <h2 class="section-title">سوالات</h2>
+                    <ol class="question-list">
+                        <li>چڑیا کون تھی؟</li>
+                        <li>اس نے چیونٹی کی کیسے مدد کی؟</li>
+                        <li>خرگوش کو کیا مسئلہ تھا؟</li>
+                        <li>جب چڑیا مشکل میں تھی تو کس نے اس کی مدد کی؟</li>
+                        <li>اس کہانی سے ہمیں کیا سبق ملتا ہے؟</li>
+                    </ol>
                 </div>
-                <div class="vocab-item">
-                    <span class="vocab-urdu">چڑیا</span>
-                    <span class="vocab-english">Bird</span>
-                </div>
-                <div class="vocab-item">
-                    <span class="vocab-urdu">جنگل</span>
-                    <span class="vocab-english">Forest</span>
-                </div>
-                <div class="vocab-item">
-                    <span class="vocab-urdu">چیونٹی</span>
-                    <span class="vocab-english">Ant</span>
-                </div>
-                <div class="vocab-item">
-                    <span class="vocab-urdu">خرگوش</span>
-                    <span class="vocab-english">Rabbit</span>
-                </div>
-                <div class="vocab-item">
-                    <span class="vocab-urdu">گھونسلہ</span>
-                    <span class="vocab-english">Nest</span>
-                </div>
-                <div class="vocab-item">
-                    <span class="vocab-urdu">طوفان</span>
-                    <span class="vocab-english">Storm</span>
-                </div>
-                <div class="vocab-item">
-                    <span class="vocab-urdu">مدد</span>
-                    <span class="vocab-english">Help</span>
-                </div>
-                <div class="vocab-item">
-                    <span class="vocab-urdu">سبق</span>
-                    <span class="vocab-english">Lesson</span>
+                <div class="moral-section">
+                    <h2 class="section-title">سبق</h2>
+                    <p class="moral-text">
+                        چڑیا نے کہا: "شکریہ دوستو! آج مجھے سمجھ آ گیا کہ جب ہم دوسروں کی مدد کرتے ہیں، تو وقت آنے پر دوسرے بھی ہماری مدد کرتے ہیں۔"
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-        <button class="prev" onclick="changeSlide(-1)" aria-label="Previous Slide">❯</button>
-        <button class="next" onclick="changeSlide(1)" aria-label="Next Slide">❮</button>
 
+        <!-- Slide 6 (Vocabulary) -->
+        <div class="slide">
+            <div class="page-heading">
+                Page 6
+                <span class="urdu-heading">نئے الفاظ</span>
+            </div>
+            <div class="activities-content">
+                <div class="vocabulary-section">
+                    <h2 class="section-title">نئے الفاظ (New Words)</h2>
+                    <div class="vocab-grid">
+                        <div class="vocab-item">
+                            <span class="vocab-urdu">مہربان</span>
+                            <span class="vocab-english">Kind</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-urdu">چڑیا</span>
+                            <span class="vocab-english">Bird</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-urdu">جنگل</span>
+                            <span class="vocab-english">Forest</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-urdu">چیونٹی</span>
+                            <span class="vocab-english">Ant</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-urdu">خرگوش</span>
+                            <span class="vocab-english">Rabbit</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-urdu">گھونسلہ</span>
+                            <span class="vocab-english">Nest</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-urdu">طوفان</span>
+                            <span class="vocab-english">Storm</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-urdu">مدد</span>
+                            <span class="vocab-english">Help</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-urdu">سبق</span>
+                            <span class="vocab-english">Lesson</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="prev" onclick="changeSlide(-1)">❯</button>
+        <button class="next" onclick="changeSlide(1)">❮</button>
+
+        
         <div class="dots"></div>
-        <div class="slide-counter">1 / 4</div>
+        <div class="slide-counter">1 / 7</div>
+
     </div>
 
+
+    <!-- Audio elements -->
+    <audio id="bgMusic" loop>
+        <source src="jungle-ambiance.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="narration">
+        <source src="" type="audio/mpeg">
+    </audio>
+    
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelector('.dots');
         const counter = document.querySelector('.slide-counter');
-        const audio = document.getElementById('bgMusic');
-        const audioToggle = document.getElementById('audioToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        const narration = document.getElementById('narration');
+        const bgMusicToggle = document.getElementById('bgMusicToggle');
+        const narrationToggle = document.getElementById('narrationToggle');
+
+        // Initialize the first slide properly
+        window.onload = function() {
+            // Remove active class from all slides except title
+            slides.forEach((slide, index) => {
+                if (index !== 0) {
+                    slide.classList.remove('active');
+                }
+            });
+            updateCounter();
+        };
 
         // Create dots
         slides.forEach((_, index) => {
@@ -437,13 +499,29 @@
         });
 
         function showSlide(n) {
+            // Remove active class from all slides
             slides.forEach(slide => slide.classList.remove('active'));
             document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
             
+            // Calculate new slide index
             currentSlide = (n + slides.length) % slides.length;
+            
+            // Add active class to new slide
             slides[currentSlide].classList.add('active');
             document.querySelectorAll('.dot')[currentSlide].classList.add('active');
-            counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+            
+            updateCounter();
+            
+
+            // Handle narration for story pages (slides 1-4)
+            if (currentSlide >= 1 && currentSlide <= 4) {
+                narration.src = `page${currentSlide}.m4a`;
+                narration.load();
+                narrationToggle.style.display = 'block';
+            } else {
+                narrationToggle.style.display = 'none';
+                narration.pause();
+            }
         }
 
         function changeSlide(n) {
@@ -454,28 +532,46 @@
             showSlide(n);
         }
 
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play();
-                audioToggle.textContent = 'Pause Music';
+        function toggleBackgroundMusic() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                bgMusicToggle.textContent = 'Pause Background Music';
             } else {
-                audio.pause();
-                audioToggle.textContent = 'Play Music';
+                bgMusic.pause();
+                bgMusicToggle.textContent = 'Play Background Music';
+            }
+        }
+
+        function toggleNarration() {
+            if (narration.paused) {
+                narration.play();
+                narrationToggle.textContent = 'Pause Narration';
+            } else {
+                narration.pause();
+                narrationToggle.textContent = 'Play Narration';
             }
         }
 
         function updateVolume(value) {
-            audio.volume = value;
+            bgMusic.volume = value;
+            narration.volume = value;
+        }
+
+        function updateCounter() {
+            counter.textContent = `${currentSlide + 1} / ${slides.length}`;
         }
 
         // Set initial volume
-        audio.volume = 0.5;
+        bgMusic.volume = 0.5;
+        narration.volume = 0.5;
 
         // Handle page visibility change
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
-                audio.pause();
-                audioToggle.textContent = 'Play Music';
+                bgMusic.pause();
+                narration.pause();
+                bgMusicToggle.textContent = 'Play Background Music';
+                narrationToggle.textContent = 'Play Narration';
             }
         });
 
@@ -483,7 +579,7 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') changeSlide(-1);
             if (e.key === 'ArrowRight') changeSlide(1);
-            if (e.key === ' ') toggleAudio(); // Space bar toggles audio
+            if (e.key === ' ') toggleBackgroundMusic(); // Space bar toggles background music
         });
     </script>
 </body>
