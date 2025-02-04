@@ -289,14 +289,121 @@
         line-height: 1.8;
         color: #2c3e50;
     }
+
+
+    @media (max-width: 768px) {
+        body {
+            padding: 0;
+        }
+
+        .slideshow-container {
+            padding: 10px;
+            max-width: 100%;
+            margin: 0;
+            border-radius: 0;
+            min-height: 100vh;
+        }
+
+        .title-page {
+            padding: 20px;
+            height: auto;
+            min-height: 80vh;
+        }
+
+        .title-page h1 {
+            font-size: 36px;
+        }
+
+        .title-page .subtitle {
+            font-size: 24px;
+        }
+
+        .title-page img {
+            max-width: 80% !important;
+            height: auto;
+        }
+
+        .slide img {
+            height: auto;
+            max-height: 40vh;
+            object-fit: contain;
+        }
+
+        .slide-content {
+            padding: 15px 0;
+        }
+
+        .slide-title {
+            font-size: 28px;
+        }
+
+        .slide-text {
+            font-size: 18px;
+        }
+
+        .audio-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .audio-controls button {
+            flex: 1;
+            max-width: 45%;
+            padding: 12px 8px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .volume-control {
+            width: 60px;
+        }
+
+        .prev, .next {
+            padding: 8px;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .prev {
+            left: 5px;
+        }
+
+        .next {
+            right: 5px;
+        }
+
+        .activities-content {
+            height: auto;
+            max-height: 60vh;
+        }
+
+        .vocab-grid {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+
+        .vocab-item {
+            padding: 8px;
+            font-size: 16px;
+        }
+    }
     </style>
 </head>
 <body>
 
     <div class="audio-controls">
-        <button onclick="toggleBackgroundMusic()" id="bgMusicToggle">Play Background Music</button>
         <button onclick="toggleNarration()" id="narrationToggle">Play Narration</button>
         <input type="range" class="volume-control" min="0" max="1" step="0.1" value="0.5" onchange="updateVolume(this.value)">
+        <button onclick="toggleBackgroundMusic()" id="bgMusicToggle">Play Background</button>
     </div>
 
     
